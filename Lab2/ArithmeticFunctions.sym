@@ -1,0 +1,13 @@
+//Symbol Name		Page Address
+//----------------	------------
+//	Equal                   3016
+//	X                       3023
+//	Y                       3024
+//	ZPX                     300A
+//	ZPY                     300F
+//	abs_x                   3026
+//	abs_y                   3027
+//	larger                  3028
+//	subtraction             3025
+//	xBig                    301B
+//	yBig                    301F
