@@ -1,0 +1,67 @@
+LDR Instruction: 
+	Load Instruction - Read data from Memory 
+	LDR - 2 Operands --> Value to be read from memory 
+						--> Destination Register (value after the instruction is read) 
+						
+						
+LC-3 LDR Instruction: 
+	LDR, DR, SR1, offset 
+	SR1 = Base Register 
+	LD[R] = Mechanism - Addressing Mode; It gets used to calculate the address of the memory location to be read. 
+			Addressing Mode = Base + Offset 
+			
+Instruction Cycle: 
+	Instructions are processed in the control unit in a very systematic step by step manner. 
+	The sequence of steps is called "instructions cycle" 
+	each step => phase 
+	
+6 Phases in Instruction Cycle: 
+	1. Fetch the instruction from memory 
+	2. Decode the instruction 
+	3. Evaluate the Address  
+	4. Fetch operands from memory 
+	5. Execute Operation 
+	6. Store Results 
+
+It then loops back into #1. 
+
+	1. Fetch: 
+		Obtain instruction from memory & load to IR. 
+		PC [ADDR] -> [MAR Address] -> INSTRUCTION -> [MDR Instruction] -> [IR LDR] 
+		PC + 1
+		
+	2. Decode: 
+		Looks at the opcode [15:12] and decides what operation needs to be performed. 
+	
+	3. Evaluate Address: 
+		Compute the address of the operand in memory. 
+		ex: LDR, DR, SR1, Offset 6 
+			SR1 + offset6  --> Evaluates the address for the memory location. 
+	4. Fetch Operands: 
+		Obtains source operands needed to process instruction 
+		
+		Ex: ADD, R1, R2, R3 
+		Ex: LDR => M[SR1 + offset6] 
+	
+	5. Execute Operation: 
+		Carries out the execution of the instructions
+		Ex: ADD -> Adding 
+		
+	
+	6. Store Results: 
+		Store a value in destination register 
+		
+		Ex: ADD R1, R2, R3 
+		Ex: STR R1, BaseR, offset
+		
+		
+3 Basic Kinds of Instructions: 
+
+	1. Operate Instruction: ADD, AND, NOT
+	2. Data Movement Instructions: { LD, LDR, LDI} 
+									{ ST, STR, STI } 
+	
+	3. Control Instruction => Change the sequence of instruction execution 
+		JMP -> Unconditional 
+		BR -> Unconditional & Conditional 
+	

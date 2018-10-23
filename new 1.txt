@@ -1,0 +1,20 @@
+Compute Sum of 12 integers: 
+
+	Numbers start at location x3100 
+	Program starts @ x3000 
+	--------------------------------------------------
+	R1 = x3100  ; Address to be read. 
+	R3 = 0 		; Sum 
+	R2 = 12 
+	
+x 3000 LEA R1, xFF		;R1 <-- PC+1+Offset 
+x3001 AND R3, R3, x0 
+x3002 AND R2, R2, x0 
+x3003 AND R2, R2, xC
+x3004 BRz _________ 
+x3005 LDR R4, R1, x0 
+x3006 ADD R3, R3, R4 
+x3007 ADD R1, R1, x1 
+x3008 ADD R2, R2, x-1 
+x3009 BR ____________ 
+

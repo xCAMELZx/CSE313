@@ -1,0 +1,112 @@
+10.10.2018 -- Wednesday Class 
+
+Von-Neumann Model -- Chapter 4 
+
+	 To get any task done by the computer we need 2 things. 
+		1. We need a computer program. Specifies the task the needs to be performed. 
+		2. Computer to carry out the task. 
+		
+Von-Neumann Fundamental Model: Processing Computer Programs -- 1946 
+	1. Memory - Contains instructions and data. 
+	2. CPU, Processing Unit - Performing arithmetic and logic operations. 
+	3. Input Device, I/O - Keyboard, Mouse, Scanners, Disks, 
+	4. Output Device - Monitor, Printer, LED, Disks. 
+	5. Control Unit - Interpreting Instructions. 
+	
+	Von-Neumann Model: 
+										Memory (MAR, MDR) 
+								
+			            Input (keyboard, mouse)         Output (Monitor, Printer) 
+										
+										       CPU (ALU, TEMP)
+		
+									       Control Unit (PC, IR) 
+										   
+										   
+1. Memory: 
+2^k(xm) array of stored bit 
+Address Space: 2^k 
+Addressability: m bits 
+
+Ex: 256 MB 
+Address Space: 256 Million 
+Addressability: 1 Byte( 8 bits ) 
+
+Basic Operations of Memory: 
+
+LOAD: Read a value from a memory location. 
+STORE: Write a value into a memory location. 
+
+MAR - Memory Address Register 
+MDR - Memory Data Register 
+
+Interfacing to Memory: 
+	How does processing unit get data to/from a memory location? 
+
+			To LOAD a location (A) 
+				1. Writes the address (A) into MAR 
+				2. Signal "Read" will be enabled. 
+				3. Reads the "Data" from MDR. 
+			
+			To STORE a value x into location (A) 
+				1. Write data (x) into MDR. 
+				2. Write address (A) into MAR
+				3. "Write" signal enabled. 
+				
+				
+2. Processing Unit: 
+	The actual processing of information in the computer; is carried out 
+	by the processing unit. 
+	
+	Consists Of: 
+		(1): ALU - Arithmetic Logic Unit - Add, Subtract, AND, OR, NOT
+					Other complex functional units: divide, square root. 
+					* LC-3: Performs some arithmetic operations: ADD, AND, NOT. 
+		
+		(2) Registers 
+				- Small, temporary storage. 
+				- Operands and results of functional units. 
+				* LC-3: 8 General Purpose Registers. 
+						R0, R1, R2, .... R7 
+							each register holds 16 bits 
+		(3) Word Size 
+				- Number of bits normally processed by ALU in one instructions 
+				- Width of the registers. 
+				*LC-3: 16-Bits.
+				
+				
+3. Input and Output: 
+	*LC-3 => Input is Keyboard 
+			Output => Monitor 
+				
+4. Control Unit: 
+	Orchestrates the execution of the program. 
+	To keep track of which instructions is being executed, control unit has the instruction register
+	(IR) = Contains the current instructions 
+	
+To keep track of which instructions needs to be executed next => The CU has a register that contains the next instruction address. 
+			This is known as the Program Counter Register (PC) 
+			
+			(PC) = Contains the address that needs to be executed. 
+			
+							Instruction Processing:
+			* The control idea of Von-Neumann model is that instructions & Data are both stored in sequence of bits in computer memory. 
+				The program is executed (one instruction at a time). 
+
+				
+			Instruction: Specifies 2 things: 
+			 1. Opcode - opearation to be performed 
+			 2. Operands - data/location to be used for operation 
+			 
+			 Add Instruction: ADD, ___, ___, ____ 
+			 3 Operands  - 2 Source Commands (data to be added 
+						 - 1 Destination operand (result of sum) 
+						
+				Example: LC-3 ADD Instruction: 
+					LC-3 => Has 16 bit instruction (2^4) 
+						=> each instruction has 4 bit code [15:12] 
+								LC-3 has 8 GPR's => R0, R1, R2, .... R7 
+						
+						
+
+										

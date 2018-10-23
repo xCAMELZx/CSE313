@@ -1,0 +1,14 @@
+//Symbol Name		Page Address
+//----------------	------------
+//	FINAL                   3016
+//	ISZERO                  3019
+//	MULT1                   300C
+//	POS                     3029
+//	SIGNIG                  3004
+//	START                   3007
+//	X                       3030
+//	XNEG                    3020
+//	XY                      3032
+//	Y                       3031
+//	YNEG                    3025
+//	nProd                   302B
