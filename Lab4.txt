@@ -1,0 +1,68 @@
+;Class: CSE 313 Machine Orginization
+;Section: 04
+;Instructor: Taline Georgiou
+;Term: Winter 2018
+;Name: 
+;Lab#4: Fibonacci Numbers
+;Description: This program computes Fn, the n-th Fibonacci number, 
+;finds the largest Fn so that no overflow occurs, stores Fn, N
+; and FN. "n" is loaded from the data file into x3100. 
+
+
+	.ORIG x3000
+	
+	LDI R0, n
+	ADD R1, R0, #0		; store n in R1 to manipulate
+	ADD R1, R1, #-2		;
+	BRnz LESS		; check if n <= 2
+
+	AND R1, R1, #0		; clear R1
+	ADD R1, R0, #0		; store n into R1
+
+	AND R2, R2, #0		; clear R2
+	AND R3, R3, #0		; clear R3
+	AND R4, R4, #0		; clear R4
+
+	ADD R2, R2, #1		; a
+	ADD R3, R3, #1		; b
+
+LOOP 	ADD R4, R3, R2		; a + b = F
+	AND R2, R2, #0		; clear a
+	ADD R2, R3, #0		; a <- b
+	AND R3, R3, #0		; clear b
+	ADD R3, R4, #0		; F <- b
+
+	ADD R4, R4, #0
+	BRn NEG			; checking F for overflow
+
+	ADD R1, R1, #-1		; decrement the counter(i)
+	BRp LOOP		; start LOOP again if n is not 0
+
+NEG	ST R1, N		; N = i if N goes negative
+
+LOOP2	ADD R5, R3, R2		; F = a + b
+	AND R2, R2, #0		; clear a
+	ADD R2, R3, #0		; a <- b
+	AND R3, R3, #0		; clear b
+	ADD R3, R5, #0		; F <- b
+
+	ADD R1, R1, #-1		; decrement the counter(i)
+	BRp LOOP2		; start LOOP2 again if n > 0
+
+	ST R5, FN		; FN <- R5
+
+	ST R4, Fn		; Fn <- R4
+
+	
+LESS	AND R7, R7, #0		; clear R7
+	ADD R7, R7, #1		; N = 1 since n <= 2
+	ST R7, Fn		; Fn <- R7
+
+	HALT
+
+n	.FILL x3100
+Fn	.FILL x3101
+N	.FILL x3102
+FN	.FILL x3103
+
+	.END

@@ -1,0 +1,54 @@
+;Class: CSE 313 Machine Organization
+;Section: 04
+;Instructor: Taline Georgiou
+;Term: Winter 2018
+;Name: 
+;Lab#3: Days Of The Week
+;Description: This program keeps prompting for an integer in the 
+; range 0-6, and each time it outputs the corresponding name of the
+; day. Sunday=0, Monday=1, Tuesday=2, Wednesday=3, Thursday=4,
+; Friday=5 and Saturday=6. If something other than 0 through 6
+; is pressed, the program exits. This program does not need 
+; a data file to run because it accepts user input. 
+
+
+	.ORIG x3000		; Address where program code begins
+
+RESTART	LEA R0, PROMPT 		; Loads address of PROMPT into R0
+	PUTS			; Output the prompt to the display
+	GETC 			; Place ASCII value of input character into R0
+
+	ADD R3, R0, x0 		; Copy R0 into R3
+	ADD R3, R3, #-16	; Subtract 48, the ASCII value of 0
+	ADD R3, R3, #-16
+	ADD R3, R3, #-16	; R3 now contains the actual value
+
+	AND R5, R5, #0     	; R5 <- 0 (clear R5)    
+	ADD R5, R5, R3		; R5 <- contents of R3
+	ADD R5, R5, #-6		; R5 <- R5 + (-6)
+;>6?	
+	BRp EXIT		; If R5 is postive, EXIT
+
+	LEA R0, DAYS		; Loads address of DAYS into R0
+	ADD R3, R3, x0		; To be able to use conditional codes
+LOOP	BRz DISPLAY		; If zero, go to DISPLAY
+	ADD R0, R0, #10		; Go to next day
+	ADD R3, R3, #-1		; Decrement loop variable
+	BR LOOP			; Go to beginning of loop
+
+DISPLAY	PUTS			; Output from LOOP when LOOP is zero
+	BR RESTART		; Go to RESTART
+
+EXIT	HALT
+
+PROMPT  .STRINGZ " Please enter number: "
+
+DAYS 	.STRINGZ "Sunday   "
+	.STRINGZ "Monday   "
+	.STRINGZ "Tuesday  "
+	.STRINGZ "Wednesday"
+	.STRINGZ "Thursday "
+	.STRINGZ "Friday   "
+	.STRINGZ "Saturday "
+
+	.END
