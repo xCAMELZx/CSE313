@@ -1,6 +1,8 @@
 //Symbol Name		Page Address
 //----------------	------------
-//	DAYS                    312A
-//	DISPLAY                 310D
-//	LOOP                    3109
-//	PROMPT                  310F
+//	DAYS                    312F
+//	DISPLAY                 3111
+//	EXIT                    3113
+//	LOOP                    310D
+//	PROMPT                  3114
+//	RESTART                 3100
